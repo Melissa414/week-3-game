@@ -22,8 +22,9 @@
 
 <script type='text/javascript'>
 
-// Create an array that lists out all of the options
+//array
 var computerChoices = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
+
 var wins= 0;
 var losses= 0;
 var draw= 0;
@@ -38,16 +39,16 @@ document.onkeyup = function(event) {
 // 	(userGuess == 'l','m','n','o','p','q','r')
 // 	(userGuess == 's','t','u','v','w','x','y','z')){
 
-	if ((computerChoices == 'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z') 
+	  else if(userGuess == computerChoices){
+		draw++;
+
+	} if ((computerChoices == 'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z') 
 		&& 
 		(userGuess == 'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z')){
 		wins++;
 
 	} else if ((userGuess == 'a','b','c','d','e','f','g','h','i','j','k','l') && (computerChoices == 'm','n','o','p','q','r','s','t','u','v','w','x','y','z' )){
 		losses++;
-
-	}else if(userGuess == computerChoices){
-		draw++;
 	}
 
 
@@ -63,18 +64,6 @@ function clearFields() {
   return false;
 } 
 
-
-// Captures Key Clicks
-
-// document.onkeyup = function(event) {
-
-
-// // Determines which exact key was selected. Make it lowercase
-// var options = String.fromCharCode(event.keyCode).toLowerCase();
-
-// var computerGuess = options[Math.floor(Math.random()*options.length)];
-
-// }
 
 	var html = '<p>Guess the letter I am thinking of</p>' +
  		'<p>wins:' + wins + '</p>' +
