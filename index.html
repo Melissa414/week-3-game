@@ -16,8 +16,6 @@
 
 	<p>losses: 0</p>
 
-	<p>draw: 0</p>
-
 </div>
 
 <script type='text/javascript'>
@@ -27,7 +25,6 @@ var computerChoices = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','
 
 var wins= 0;
 var losses= 0;
-var draw= 0;
 
 document.onkeyup = function(event) {
 
@@ -38,16 +35,10 @@ document.onkeyup = function(event) {
 // if ((userGuess == 'a','b','c','d','e','f','g','h','i','j','k')
 // 	(userGuess == 'l','m','n','o','p','q','r')
 // 	(userGuess == 's','t','u','v','w','x','y','z')){
-
-	  else if(userGuess == computerChoices){
-		draw++;
-
-	} if ((computerChoices == 'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z') 
-		&& 
-		(userGuess == 'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z')){
+	if (computerGuess === userGuess){
 		wins++;
 
-	} else if ((userGuess == 'a','b','c','d','e','f','g','h','i','j','k','l') && (computerChoices == 'm','n','o','p','q','r','s','t','u','v','w','x','y','z' )){
+	} else if (userGuess !== computerGuess){
 		losses++;
 	}
 
@@ -55,24 +46,26 @@ document.onkeyup = function(event) {
 
 
 
-// Clear/Reset the text field   
-function clearFields() {
-    guessInput.value = '0';
-    statusOutput.value = '0';
-    counter;
-  //added to put function out of call stack
-  return false;
-} 
+	// Clear/Reset the text field   
+	function clearFields() {
+	    wins = 0;
+	    losses = 0;
+	  //added to put function out of call stack
+	  return false;
+	} 
+
+	if (wins + losses === 10){
+		clearFields()
+		alert("You will never win!")
+	}
 
 
-	var html = '<p>Guess the letter I am thinking of</p>' +
- 		'<p>wins:' + wins + '</p>' +
- 		'<p>losses:' + losses + '</p> '+
- 		'<p>draw:'  + draw + '</p> '
+	var html = '<h1>Guess the letter I am thinking of</h1>' +
+		'<p>wins:' + wins + '</p>' +
+		'<p>losses:' + losses + '</p> '
 
- 		document.querySelector('#game').innerHTML = html;
- 	}
-jnk
+		document.querySelector('#game').innerHTML = html;
+	}
 </script>
 </body>
 </html>
